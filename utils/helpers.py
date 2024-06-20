@@ -26,12 +26,17 @@ def init_config(config_path) -> None:
                       choices=[
                           ("Archipelago/worlds", "source"),
                           ("Archipelago/lib/worlds", "compiled")
-                      ])
+                      ]),
+        inquirer.Text("github_token",
+                      message="Do you have a GitHub token? Creating one to use here will let you"
+                              "bypass rate limits for unauthenticated requests."
+                              "Otherwise, just press Enter to skip this question.")
     ]
 
     setup_answers = inquirer.prompt(setup_questions)
     config['ap_path'] = setup_answers['ap_path']
     config['ap_type'] = setup_answers['ap_type']
+    config['github_token'] = setup_answers['github_token'] if len(setup_answers['github_token']) > 0 else None
 
     with open(config_path.absolute(), 'w', ) as f:
         yaml.dump(config, f, sort_keys=False)
