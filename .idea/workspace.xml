@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ad6b01b-9b0e-43f2-8876-1650710b1f2d" name="Changes" comment="add multiselect menu for updating worlds">
-      <change beforePath="$PROJECT_DIR$/utils/helpers.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/helpers.py" afterDir="false" />
-    </list>
+    <list default="true" id="8ad6b01b-9b0e-43f2-8876-1650710b1f2d" name="Changes" comment="support for adding GitHub Token in setup wizard" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,8 +18,15 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <branch-grouping />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/sflavelle/TGC_AP_Updater.git",
+    "accountId": "08575ee9-c70d-410d-bdd9-5ead456f3367"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
@@ -99,7 +104,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718880888672</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="support for adding GitHub Token in setup wizard">
+      <option name="closed" value="true" />
+      <created>1718881147289</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1718881147289</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -116,6 +129,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial version" />
     <MESSAGE value="add multiselect menu for updating worlds" />
-    <option name="LAST_COMMIT_MESSAGE" value="add multiselect menu for updating worlds" />
+    <MESSAGE value="support for adding GitHub Token in setup wizard" />
+    <option name="LAST_COMMIT_MESSAGE" value="support for adding GitHub Token in setup wizard" />
   </component>
 </project>

@@ -1,0 +1,5 @@
+inquirer~=3.2.5
+PyYAML~=6.0.1
+pypdl~=1.4.2
+PyGithub~=2.3.0
+tqdm~=4.66.4
