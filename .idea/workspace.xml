@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ad6b01b-9b0e-43f2-8876-1650710b1f2d" name="Changes" comment="support for adding GitHub Token in setup wizard" />
+    <list default="true" id="8ad6b01b-9b0e-43f2-8876-1650710b1f2d" name="Changes" comment="add requirements.txt">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,6 +24,12 @@
     <branch-grouping />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "sflavelle"
+  }
+}]]></component>
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
     "url": "https://github.com/sflavelle/TGC_AP_Updater.git",
@@ -112,7 +121,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718881147289</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="add requirements.txt">
+      <option name="closed" value="true" />
+      <created>1718881485804</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1718881485804</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -130,6 +147,7 @@
     <MESSAGE value="Initial version" />
     <MESSAGE value="add multiselect menu for updating worlds" />
     <MESSAGE value="support for adding GitHub Token in setup wizard" />
-    <option name="LAST_COMMIT_MESSAGE" value="support for adding GitHub Token in setup wizard" />
+    <MESSAGE value="add requirements.txt" />
+    <option name="LAST_COMMIT_MESSAGE" value="add requirements.txt" />
   </component>
 </project>
