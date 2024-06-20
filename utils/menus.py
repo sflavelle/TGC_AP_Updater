@@ -19,7 +19,7 @@ def main_menu(config: dict, config_file):
     menu_select_index = menu.show()
     match menu_select_index:
         case 0:
-            run_updates(config, config_file)
+            worlds_update(config, config_file)
             main_menu(config, config_file)
         case 1:
             worlds(config, config_file)
@@ -90,3 +90,16 @@ def world_add(config: dict, config_file):
 
     config['worlds'] = dict(sorted(worlds_config.items()))
     worlds(config, config_file)
+
+
+def worlds_update(config: dict, config_file):
+    worlds_config = config['worlds'] if 'worlds' in config else dict()
+
+    update_selector = [
+        inquirer.Checkbox("to_update",
+                          message="Select the worlds you wish to update.",
+                          choices=[w for w in worlds_config])
+    ]
+
+    worlds_to_update = inquirer.prompt(update_selector)
+    run_updates(config, config_file, worlds_to_update['to_update'])

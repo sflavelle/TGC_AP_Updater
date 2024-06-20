@@ -57,7 +57,7 @@ def validate_github_repo(config: dict, repo: str):
     return True
 
 
-def run_updates(config, config_path):
+def run_updates(config, config_path, worlds_to_update):
     gh_token: str = config['github_token'] or None
     gh = Github(gh_token)
     dl = Pypdl(allow_reuse=True)
@@ -67,15 +67,16 @@ def run_updates(config, config_path):
             if asset.name == match or asset.name.endswith(".zip"):
                 return asset.browser_download_url
 
-    pbar = tqdm(total=len(config["worlds"]), unit='world')
-    for world in config['worlds']:
+    worlds = [w for w in config['worlds'] if w in worlds_to_update]
+
+    pbar = tqdm(total=len(worlds), unit='world')
+    for world in worlds:
         pbar.set_description(f"Checking {world}...")
         slug = config['worlds'][world]["slug"]
         worldtype = config['worlds'][world]["type"]
         filename = config['worlds'][world]["filename"]
         foldername = config['worlds'][world]['foldername']
         version = config['worlds'][world]['version']
-
 
         finalpath = (config["ap_path"]
                      + ('/lib/' if worldtype == "compiled" else '/')
