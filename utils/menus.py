@@ -102,4 +102,9 @@ def worlds_update(config: dict, config_file):
     ]
 
     worlds_to_update = inquirer.prompt(update_selector)
-    run_updates(config, config_file, worlds_to_update['to_update'])
+
+    if len(worlds_to_update) == 0:
+        print("No worlds selected, aborting.")
+        return True
+    else:
+        run_updates(config, config_file, worlds_to_update['to_update'])
