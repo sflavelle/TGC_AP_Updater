@@ -73,6 +73,9 @@ def world_add(config: dict, config_file):
                           (".apworld file, inside a zip", "apworld_zip"),
                           ("Git repo only", "git_only")
                       ]),
+        inquirer.Text("world_tagprefix", ignore=lambda x: x["world_type"] == "git_only",
+                      message="If the developer maintains multiple worlds in this repo, what's a common string"
+                              "in this game's releases? (If N/A, press enter to skip)"),
         inquirer.Text("world_filename", ignore=lambda x: x["world_type"] == "git_only",
                       message="What's the name of the apworld we're looking for?"),
         inquirer.Text("world_foldername", ignore=lambda x: x["world_type"] != "git_only",
@@ -83,6 +86,7 @@ def world_add(config: dict, config_file):
     worlds_config[answers["world_name"]] = {
         "slug": answers["world_slug"],
         "type": answers["world_type"],
+        "tagprefix": answers["world_tagprefix"],
         "filename": f"{answers['world_filename']}.apworld" if answers['world_filename'] else None,
         "foldername": answers['world_foldername'] if answers['world_foldername'] else None,
         "version": None

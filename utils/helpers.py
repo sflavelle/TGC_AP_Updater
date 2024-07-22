@@ -25,7 +25,8 @@ def init_config(config_path) -> None:
                       message="Where is your Archipelago's world folder?",
                       choices=[
                           ("Archipelago/worlds", "source"),
-                          ("Archipelago/lib/worlds", "compiled")
+                          ("Archipelago/lib/worlds", "compiled"),
+                          ("Archipelago/custom_worlds", "0.5.0+")
                       ]),
         inquirer.Text("github_token",
                       message="Do you have a GitHub token? Creating one to use here will let you"
@@ -79,12 +80,14 @@ def run_updates(config, config_path, worlds_to_update):
         pbar.set_description(f"Checking {world}...")
         slug = config['worlds'][world]["slug"]
         worldtype = config['worlds'][world]["type"]
+        tagprefix = config['worlds'][world]["tagprefix"]
         filename = config['worlds'][world]["filename"]
         foldername = config['worlds'][world]['foldername']
         version = config['worlds'][world]['version']
 
         finalpath = (config["ap_path"]
                      + ('/lib/' if worldtype == "compiled" else '/')
+                     + ('custom_' if worldtype == "0.5.0+" else '')
                      + "worlds/"
                      + (filename or foldername))
         try:
@@ -98,14 +101,22 @@ def run_updates(config, config_path, worlds_to_update):
             continue
         if worldtype in ["apworld", "apworld_zip"]:
             try:
-                latest = repo.get_latest_release()
+                for release in repo.get_releases():
+                    if tagprefix is not None:
+                        if tagprefix not in release.tag_name: continue
+                    for asset in release.assets:
+                        if asset.name.startswith(filename):
+                            version = release.tag_name
+                            break
+                if version == latest.tag_name:
+                    pbar.set_description(f"{world} is already up to date.")
+                    sleep(2)
+                    pbar.update(1)
+                    continue
             except GithubException as e:
                 if e.status == "404":
-                    print(f"There are no releases for {world} - it's possible this world has only pre-releases.")
-                continue
-            if version == latest.tag_name:
-                pbar.set_description(f"{world} is already up to date.")
-                sleep(2)
+                    pbar.set_description(f"There are no releases for {world} - it's possible this world has only pre-releases.")
+                    sleep(2)
                 pbar.update(1)
                 continue
 
