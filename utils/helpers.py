@@ -80,10 +80,10 @@ def run_updates(config, config_path, worlds_to_update):
         pbar.set_description(f"Checking {world}...")
         slug = config['worlds'][world]["slug"]
         worldtype = config['worlds'][world]["type"]
-        tagprefix = config['worlds'][world]["tagprefix"]
+        tagprefix = config['worlds'][world]["tagprefix"] or None
         filename = config['worlds'][world]["filename"]
-        foldername = config['worlds'][world]['foldername']
-        version = config['worlds'][world]['version']
+        foldername = config['worlds'][world]['foldername'] or None
+        version = config['worlds'][world]['version'] or None
 
         finalpath = (config["ap_path"]
                      + ('/lib/' if worldtype == "compiled" else '/')
