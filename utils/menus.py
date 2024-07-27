@@ -86,7 +86,7 @@ def world_add(config: dict, config_file):
     worlds_config[answers["world_name"]] = {
         "slug": answers["world_slug"],
         "type": answers["world_type"],
-        "tagprefix": answers["world_tagprefix"],
+        "tagprefix": answers["world_tagprefix"] if answers["world_tagprefix"] else None,
         "filename": f"{answers['world_filename']}.apworld" if answers['world_filename'] else None,
         "foldername": answers['world_foldername'] if answers['world_foldername'] else None,
         "version": None

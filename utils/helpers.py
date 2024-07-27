@@ -80,16 +80,19 @@ def run_updates(config, config_path, worlds_to_update):
         pbar.set_description(f"Checking {world}...")
         slug = config['worlds'][world]["slug"]
         worldtype = config['worlds'][world]["type"]
-        tagprefix = config['worlds'][world]["tagprefix"] or None
+        tagprefix = config['worlds'][world]["tagprefix"] if "tagprefix" in config['worlds'][world] else None
         filename = config['worlds'][world]["filename"]
-        foldername = config['worlds'][world]['foldername'] or None
-        version = config['worlds'][world]['version'] or None
+        foldername = config['worlds'][world]['foldername'] if "foldername" in config['worlds'][world] else None
+        version = config['worlds'][world]['version'] if "version" in config['worlds'][world] else None
+
+        git_release = None
 
         finalpath = (config["ap_path"]
-                     + ('/lib/' if worldtype == "compiled" else '/')
-                     + ('custom_' if worldtype == "0.5.0+" else '')
+                     + ('/lib/' if config["ap_type"] == "compiled" else '/')
+                     + ('custom_' if config["ap_type"] == "0.5.0+" else '')
                      + "worlds/"
                      + (filename or foldername))
+        print(finalpath)
         try:
             repo = gh.get_repo(full_name_or_id=slug)
         except GithubException as e:
@@ -102,17 +105,20 @@ def run_updates(config, config_path, worlds_to_update):
         if worldtype in ["apworld", "apworld_zip"]:
             try:
                 for release in repo.get_releases():
+                    print(release.tag_name)
+                    if version == release.tag_name:
+                        pbar.set_description(f"{world} is already up to date.")
+                        sleep(2)
+                        pbar.update(1)
+                        continue
                     if tagprefix is not None:
                         if tagprefix not in release.tag_name: continue
                     for asset in release.assets:
+                        print(asset.name)
                         if asset.name.startswith(filename):
                             version = release.tag_name
-                            break
-                if version == latest.tag_name:
-                    pbar.set_description(f"{world} is already up to date.")
-                    sleep(2)
-                    pbar.update(1)
-                    continue
+                            git_release = release
+                    if git_release: break
             except GithubException as e:
                 if e.status == "404":
                     pbar.set_description(f"There are no releases for {world} - it's possible this world has only pre-releases.")
@@ -120,7 +126,7 @@ def run_updates(config, config_path, worlds_to_update):
                 pbar.update(1)
                 continue
 
-            world_url = get_latest_world(latest, filename)
+            world_url = get_latest_world(git_release, filename)
             file = dl.start(url=world_url,
                             file_path='/tmp',
                             retries=3,
@@ -136,8 +142,6 @@ def run_updates(config, config_path, worlds_to_update):
                 elif worldtype == "apworld":
                     shutil.copy(file.path, finalpath)
 
-                # Update world version in config
-                version = latest.tag_name
         else:
             repo_git = None
             if os.path.exists(f"repositories/{slug}"):

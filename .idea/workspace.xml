@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ad6b01b-9b0e-43f2-8876-1650710b1f2d" name="Changes" comment="begin integrating a tagprefix option&#10;for repos maintaining multiple worlds" />
+    <list default="true" id="8ad6b01b-9b0e-43f2-8876-1650710b1f2d" name="Changes" comment="begin integrating a tagprefix option&#10;for repos maintaining multiple worlds">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/helpers.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/helpers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/menus.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/menus.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
