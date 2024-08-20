@@ -105,7 +105,6 @@ def run_updates(config, config_path, worlds_to_update):
         if worldtype in ["apworld", "apworld_zip"]:
             try:
                 for release in repo.get_releases():
-                    print(release.tag_name)
                     if version == release.tag_name:
                         pbar.set_description(f"{world} is already up to date.")
                         sleep(2)
@@ -114,8 +113,7 @@ def run_updates(config, config_path, worlds_to_update):
                     if tagprefix is not None:
                         if tagprefix not in release.tag_name: continue
                     for asset in release.assets:
-                        print(asset.name)
-                        if asset.name.startswith(filename):
+                        if asset.name.startswith(filename) or asset.name.endswith(".zip"):
                             version = release.tag_name
                             git_release = release
                     if git_release: break
