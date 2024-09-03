@@ -68,9 +68,9 @@ def run_updates(config, config_path, worlds_to_update):
     gh = Github(gh_token)
     dl = Pypdl(allow_reuse=True)
 
-    def get_latest_world(release: GitRelease, match: str):
+    def get_latest_world(release: GitRelease, match: str, worldtype):
         for asset in release.assets:
-            if asset.name == match or asset.name.endswith(".zip"):
+            if (worldtype == "apworld" and asset.name == match) or (worldtype == "apworld_zip" and asset.name.endswith(".zip")):
                 return asset.browser_download_url
 
     worlds = [w for w in config['worlds'] if w in worlds_to_update]
@@ -113,7 +113,7 @@ def run_updates(config, config_path, worlds_to_update):
                     if tagprefix is not None:
                         if tagprefix not in release.tag_name: continue
                     for asset in release.assets:
-                        if asset.name.startswith(filename) or asset.name.endswith(".zip"):
+                        if (worldtype == "apworld" and asset.name.startswith(filename)) or (worldtype == "apworld_zip" and asset.name.endswith(".zip")):
                             version = release.tag_name
                             git_release = release
                     if git_release: break
@@ -124,7 +124,7 @@ def run_updates(config, config_path, worlds_to_update):
                 pbar.update(1)
                 continue
 
-            world_url = get_latest_world(git_release, filename)
+            world_url = get_latest_world(git_release, filename, worldtype)
             file = dl.start(url=world_url,
                             file_path='/tmp',
                             retries=3,

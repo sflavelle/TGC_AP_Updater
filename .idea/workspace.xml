@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ad6b01b-9b0e-43f2-8876-1650710b1f2d" name="Changes" comment="begin integrating a tagprefix option&#10;for repos maintaining multiple worlds">
+    <list default="true" id="8ad6b01b-9b0e-43f2-8876-1650710b1f2d" name="Changes" comment="only download the appropriate filetype from github">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/helpers.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/helpers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/menus.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/menus.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,7 +161,23 @@
       <option name="project" value="LOCAL" />
       <updated>1721609440192</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="properly support AP 0.5.0 custom_worlds folder">
+      <option name="closed" value="true" />
+      <created>1722087426457</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1722087426457</updated>
+    </task>
+    <task id="LOCAL-00010" summary="only download the appropriate filetype from github">
+      <option name="closed" value="true" />
+      <created>1725333885906</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1725333885906</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -185,6 +200,8 @@
     <MESSAGE value="add another missing requirement to requirements.txt" />
     <MESSAGE value="graceful update abort if no worlds selected" />
     <MESSAGE value="begin integrating a tagprefix option&#10;for repos maintaining multiple worlds" />
-    <option name="LAST_COMMIT_MESSAGE" value="begin integrating a tagprefix option&#10;for repos maintaining multiple worlds" />
+    <MESSAGE value="properly support AP 0.5.0 custom_worlds folder" />
+    <MESSAGE value="only download the appropriate filetype from github" />
+    <option name="LAST_COMMIT_MESSAGE" value="only download the appropriate filetype from github" />
   </component>
 </project>
