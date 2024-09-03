@@ -113,7 +113,7 @@ def run_updates(config, config_path, worlds_to_update):
                     if tagprefix is not None:
                         if tagprefix not in release.tag_name: continue
                     for asset in release.assets:
-                        if asset.name.startswith(filename) or asset.name.endswith(".zip"):
+                        if (worldtype == "apworld" and asset.name.startswith(filename)) or (worldtype == "apworld_zip" and asset.name.endswith(".zip")):
                             version = release.tag_name
                             git_release = release
                     if git_release: break
